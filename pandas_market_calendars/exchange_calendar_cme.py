@@ -14,7 +14,7 @@
 # limitations under the License.
 
 import warnings
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 from datetime import time
 from itertools import chain
@@ -29,9 +29,9 @@ from .holidays_us import (Christmas, ChristmasEveBefore1993, ChristmasEveInOrAft
 from .market_calendar import MarketCalendar
 
 
-class CMEBaseExchangeCalendar(MarketCalendar):
+class CMEBaseExchangeCalendar(MarketCalendar, ABC):
     @property
-    #@abstractmethod  #Would have prefered to keep this class abstract but it fails test_market_calendar.py
+    @abstractmethod
     def name(self):
         """
         Name of the market
